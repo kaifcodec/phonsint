@@ -64,56 +64,6 @@ Registered / Found:  4
 
 ---
 
-## 📋 Structured JSON Output Example
-
-When exported using `-o output.json`, `phonsint` formats rich metadata into clean, structured JSON ready for Maltego, identity graphs, or analysis pipelines:
-
-```json
-[
-  {
-    "site_name": "Facebook",
-    "category": "Social",
-    "phone": "+14155552671",
-    "status": "Registered",
-    "url": "https://www.facebook.com/login/identify",
-    "extra": {
-      "name": "John Doe",
-      "masked_email": "j******e@gmail.com"
-    },
-    "media": {
-      "avatar": "https://scontent.xx.fbcdn.net/v/t39.30808-1/s200x200/41208912_photo.jpg"
-    },
-    "reason": null
-  },
-  {
-    "site_name": "Instagram",
-    "category": "Social",
-    "phone": "+14155552671",
-    "status": "Registered",
-    "url": "https://www.instagram.com/accounts/password/reset/",
-    "extra": {
-      "contact_point": "Phone Number Verified"
-    },
-    "media": {},
-    "reason": null
-  },
-  {
-    "site_name": "Microsoft",
-    "category": "Auth",
-    "phone": "+14155552671",
-    "status": "Registered",
-    "url": "https://login.live.com",
-    "extra": {
-      "throttle_status": 0
-    },
-    "media": {},
-    "reason": null
-  }
-]
-```
-
----
-
 ## 🚀 Installation
 
 ### 🐍 Via Virtual Environment (Recommended)
