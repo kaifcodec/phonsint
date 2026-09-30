@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Environments
+.venv/
+env/
+venv/
+uv.lock
+
+# Secrets & environment
+.env
+
+# Testing & Linting
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editor & OS files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Scan outputs & working scratch
+output/
+docs/local/
+*.local.*
+output.json
+output.csv
+out*.json
+out*.csv
+result*.json
+report*.json

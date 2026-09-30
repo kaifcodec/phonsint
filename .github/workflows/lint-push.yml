@@ -1,0 +1,36 @@
+name: Lint & Type Checks
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint & types (ruff + mypy)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies & linters
+        run: |
+          python -m pip install --upgrade pip
+          pip install phonenumbers "httpx[http2]>=0.27.0,<0.29.0" "curl_cffi>=0.7.0,<1.0.0" "rich>=13.0.0" "colorama>=0.4.0,<1.0.0" types-colorama pytest
+          pip install ruff==0.15.22 mypy
+
+      - name: Run ruff
+        run: ruff check .
+
+      - name: Run mypy
+        run: mypy phonsint tests

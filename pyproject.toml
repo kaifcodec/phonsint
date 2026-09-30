@@ -1,0 +1,95 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "phonsint"
+version = "0.1.0"
+description = "High-throughput silent phone number OSINT suite for platform footprinting, profile enrichment, and masked email discovery"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Kaif", email = "kaifcodec@gmail.com"}
+]
+
+dependencies = [
+  "phonenumbers>=8.13.0",
+  "httpx[http2]>=0.27.0,<0.29.0",
+  "curl_cffi>=0.7.0,<1.0.0",
+  "rich>=13.0.0",
+  "colorama>=0.4.0,<1.0.0"
+]
+
+requires-python = ">=3.10"
+keywords = ["osint", "phone-osint", "reconnaissance", "security", "threat-intelligence", "footprinting", "identity-enrichment", "metadata-extraction"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Information Technology",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Security",
+  "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0.0", "pytest-cov", "ruff", "mypy"]
+
+[project.urls]
+Homepage = "https://github.com/kaifcodec/phonsint"
+Repository = "https://github.com/kaifcodec/phonsint.git"
+"Bug Tracker" = "https://github.com/kaifcodec/phonsint/issues"
+
+[project.scripts]
+phonsint = "phonsint.__main__:main"
+
+[tool.flit.module]
+name = "phonsint"
+
+[tool.flit.sdist]
+exclude = [
+  "tests/",
+  "abandoned/",
+  ".github/",
+  ".git",
+  ".gitignore",
+  ".ruff_cache/",
+  "**/.ruff_cache/**",
+  "__pycache__/",
+  "**/__pycache__/**",
+  "*.pyc"
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E701", "E401", "E501", "W291"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+  "phonenumbers.*",
+  "curl_cffi.*",
+  "colorama.*"
+]
+ignore_missing_imports = true
